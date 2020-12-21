@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+        <script src="{{ url_for('static', filename='sql-wasm.min.js') }}"></script>
     </head>
     <body>
         <div class="grid-container">
@@ -46,14 +47,13 @@
 </html>
 <script>
 
-    // const sqlite3 = require('sqlite3').verbose();
-    // let db = new sqlite3.Database('batch3.db');
-    // let sql = `SELECT * FROM fellows`;
-    var conn = SQL.connect({ DRIVER: "SQLite", Database:"batch3.db"});
-    var result = conn.query("SELECT * FROM fellows")
-    var times = Object.keys(result).length;
-    for (var i=0; i<times; i++){
-        var imageUrl = URL.createObjectURL(result[i][2])
-        $('.grid-container').append('<div class="card"><div class="img-div"><img class="fellow-img" src="' + imageUrl + '"/></div><div class="content"><p class="name">'+ result[i][1] +'</p><p class="mail" >'+ result[i][3] +'</p><p class="desc">' + result[i][4] + '</p><a href="' + result[i][5] + '" class="button"> Portfolio </a></div></div>');
+initSqlJs({ locateFile: filename => `/dist/${filename}` }).then(function(SQL){
+    var db = sql.Database('batch3.db');
+    var stmt = db.prepare("SELECT * FROM fellows");
+    while(stmt.step()){
+        var row = stmt.getAsObject();
+        var imageUrl = URL.createObjectURL(row.img);
+        $('.grid-container').append('<div class="card"><div class="img-div"><img class="fellow-img" src="' + imageUrl + '"/></div><div class="content"><p class="name">'+ row.name +'</p><p class="mail" >'+ row.email +'</p><p class="desc">' + row.desc + '</p><a href="' + row.link + '" class="button"> Portfolio </a></div></div>');
     }
+  });
 </script>
