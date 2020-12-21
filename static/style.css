@@ -1,0 +1,47 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.card {
+   border: 1px solid #d3d3d3;
+   border-radius: .25rem;
+}
+  
+.img-div {
+    padding: 5px;
+}
+
+.name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.mail {
+    font-size: 0.8rem;
+    font-weight: lighter;
+}
+.fellow-img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: .25rem;
+}
+.desc {
+    font-family: sans-serif;
+}
+.content {
+    padding: 15px;
+}
+  
+.button {
+    background-color: black;
+    color: whitesmoke;
+    padding: .5rem 1.5rem;
+    cursor: pointer;
+    border-radius: .25rem;
+    text-decoration: none;
+}
+
+.button:hover {
+    border: 3px solid wheat;
+}
