@@ -9,7 +9,7 @@ def convertToBinaryData(filename):
 
 def insertData(fellowID, name, img, email, desc, link):
     try:
-        sqliteConn = sqlite3.connect('batch3.db')
+        sqliteConn = sqlite3.connect('batch3.sqlite')
         cursor = sqliteConn.cursor()
         print('Connected to DataBase')
 
@@ -35,7 +35,7 @@ def insertData(fellowID, name, img, email, desc, link):
 
 fellowID = 364582020
 name = 'Kevin Karobia'
-img = "E:\\projects\\Batch 3 website\\static\\Kevin_Karobia.jpg"
+img = "/mnt/e/projects/batch3site/static/img/Kevin_Karobia.jpg"
 email = 'gkkarobia@gmail.com'
 desc = "If Pirus and Crips all got along They d probably gun me down by the end of this song Seem like the whole"
 link = 'https://sites.google.com/10academy.org/10-academy-batch-3-kevin'

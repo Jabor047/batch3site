@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for
 from flask_cors import CORS
+import base64
 import sqlite3
 import json
 # port = 8767
@@ -19,9 +20,15 @@ def index():
     link = 'https://sites.google.com/10academy.org/10-academy-batch-3-kevin'
 
     data = fetchData()
+    for i in range(len(data)):
+        data[i] = list(data[i])
+        # data[i][2] = base64.encodebytes(data[i][2]).decode('ascii')
+        data[i][2] = base64.b64encode(data[i][2]).decode('ascii')
+
+    # data = convertList(data)
 
     return render_template('index.html', name=name, image=img, mail=email,
-                           description=desc, portLink=link,)
+                           description=desc, portLink=link, data=json.dumps(data))
 
 @app.route('/upload', methods=['POST', 'GET'])
 def me():
@@ -39,6 +46,10 @@ def fetchData():
     cursor.close()
     conn.close()
     return record
+
+def convertList(lst):
+    dct = {str(i): lst[i] for i in range(len(lst))}
+    return dct
 
 # if __name__ == '__main__':
 #     app.run(threaded=True, port=port)
