@@ -33,11 +33,11 @@ def insertData(fellowID, name, img, email, desc, link):
         if (sqliteConn):
             sqliteConn.close()
 
-fellowID = 364582020
-name = 'Kevin Karobia'
-img = "/mnt/e/projects/batch3site/static/img/Kevin_Karobia.jpg"
+fellowID = 1925
+name = 'Thomas Shelby'
+img = "/mnt/e/projects/batch3site/static/img/tommy.jpg"
 email = 'gkkarobia@gmail.com'
-desc = "If Pirus and Crips all got along They d probably gun me down by the end of this song Seem like the whole"
+desc = "Everyone's a whore, Grace. We just sell different parts of ourselves."
 link = 'https://sites.google.com/10academy.org/10-academy-batch-3-kevin'
 
 insertData(fellowID, name, img, email, desc, link)

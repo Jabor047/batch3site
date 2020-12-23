@@ -3,7 +3,6 @@ from flask_cors import CORS
 import base64
 import sqlite3
 import json
-# port = 8767
 
 app = Flask(__name__)
 CORS(app)
@@ -12,7 +11,6 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    fellowID = 364582020
     name = 'Gaitho Kevin Karobia'
     img = url_for('static', filename='img/Kevin_Karobia.jpg')
     email = 'gkkarobia@gmail.com'
@@ -22,10 +20,7 @@ def index():
     data = fetchData()
     for i in range(len(data)):
         data[i] = list(data[i])
-        # data[i][2] = base64.encodebytes(data[i][2]).decode('ascii')
         data[i][2] = base64.b64encode(data[i][2]).decode('ascii')
-
-    # data = convertList(data)
 
     return render_template('index.html', name=name, image=img, mail=email,
                            description=desc, portLink=link, data=json.dumps(data))
@@ -36,7 +31,7 @@ def me():
 
 def fetchData():
     # create a connection to db
-    conn = sqlite3.connect('batch3.db')
+    conn = sqlite3.connect('batch3.sqlite')
     cursor = conn.cursor()
 
     # select all values from the fellows table
@@ -46,10 +41,3 @@ def fetchData():
     cursor.close()
     conn.close()
     return record
-
-def convertList(lst):
-    dct = {str(i): lst[i] for i in range(len(lst))}
-    return dct
-
-# if __name__ == '__main__':
-#     app.run(threaded=True, port=port)

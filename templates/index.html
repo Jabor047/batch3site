@@ -1,8 +1,13 @@
-<html>
+<html lang="en-US">
     <head>
+        <meta charset="utf-8">`
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="description" content="Contains Information for the Fellows from 10 academy's third batch">
+        <meta property="og.title" content="Batch 3 Fellows">
+        <meta property="og:description" content="Contains Information for the Fellows from 10 academy's third batch">
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         <script src="{{ url_for('static', filename='jquery.js') }}"></script>
-        <script src="{{ url_for('static', filename='sql-wasm.js') }}"></script>
+        <title>Batch 3 Fellows</title>
     </head>
     <body>
         <div class="grid-container">
@@ -49,20 +54,6 @@
     var data = {{ data|safe }};
     var times = Object.keys(data).length;
     for (var i=0; i<times; i++){
-        var binImg = atob(data[i][2]);
-        console.log(binImg.type)
-        var imageUrl = URL.createObjectURL(binImg);
-        $('.grid-container').append('<div class="card"><div class="img-div"><img class="fellow-img" src="' + imageUrl + '"/></div><div class="content"><p class="name">'+ data[i][1] +'</p><p class="mail" >'+ data[i][3] +'</p><p class="desc">' + data[i][4] + '</p><a href="' + data[i][5] + '" class="button"> Portfolio </a></div></div>');
+        $('.grid-container').append('<div class="card"><div class="img-div"><img class="fellow-img" src="data:image/jpg;base64,' + data[i][02] + '"/></div><div class="content"><p class="name">'+ data[i][1] +'</p><p class="mail" >'+ data[i][3] +'</p><p class="desc">' + data[i][4] + '</p><a href="' + data[i][5] + '" class="button"> Portfolio </a></div></div>');
     }
-
-// initSqlJs({ locateFile: filename => `/static/${filename}` }).then(function(SQL){
-    
-//     var db = new SQL.Database('/static/batch3.sqlite');
-//     var stmt = db.prepare("SELECT * FROM fellows");
-//     while(stmt.step()){
-//         var row = stmt.getAsObject();
-//         var imageUrl = URL.createObjectURL(row.img);
-//         $('.grid-container').append('<div class="card"><div class="img-div"><img class="fellow-img" src="' + imageUrl + '"/></div><div class="content"><p class="name">'+ row.name +'</p><p class="mail" >'+ row.email +'</p><p class="desc">' + row.desc + '</p><a href="' + row.link + '" class="button"> Portfolio </a></div></div>');
-//     }
-//   });
 </script>

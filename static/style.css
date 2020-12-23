@@ -1,4 +1,6 @@
 .grid-container {
+    margin: 15px;
+    padding-top: 15px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
