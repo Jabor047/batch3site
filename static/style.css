@@ -1,6 +1,19 @@
+.header {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    padding: 8px 8px;
+    border-radius: 10px;
+}
+.logo {
+    padding: 10px;
+}
+.batch {
+    font-size: 25px;
+    float: right;
+    padding: 10px;
+}
 .grid-container {
     margin: 15px;
-    padding-top: 15px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
@@ -45,5 +58,5 @@
 }
 
 .button:hover {
-    border: 3px solid wheat;
+    border: 2px solid #ED1F33;
 }

@@ -11,19 +11,12 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    name = 'Gaitho Kevin Karobia'
-    img = url_for('static', filename='img/Kevin_Karobia.jpg')
-    email = 'gkkarobia@gmail.com'
-    desc = "If Pirus and Crips all got along They d probably gun me down by the end of this song Seem like the whole"
-    link = 'https://sites.google.com/10academy.org/10-academy-batch-3-kevin'
-
     data = fetchData()
     for i in range(len(data)):
         data[i] = list(data[i])
         data[i][2] = base64.b64encode(data[i][2]).decode('ascii')
 
-    return render_template('index.html', name=name, image=img, mail=email,
-                           description=desc, portLink=link, data=json.dumps(data))
+    return render_template('index.html', data=json.dumps(data))
 
 @app.route('/upload', methods=['POST', 'GET'])
 def me():

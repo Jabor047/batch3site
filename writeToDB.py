@@ -1,3 +1,5 @@
+from flask import url_for
+import pandas as pd
 import sqlite3
 import os
 
@@ -7,7 +9,7 @@ def convertToBinaryData(filename):
         binData = file.read()
     return binData
 
-def insertData(fellowID, name, img, email, desc, link):
+def insertData(name, img, email, desc, link):
     try:
         sqliteConn = sqlite3.connect('batch3.sqlite')
         cursor = sqliteConn.cursor()
@@ -19,10 +21,10 @@ def insertData(fellowID, name, img, email, desc, link):
                                email TEXT NOT NULL, desc TEXT NOT NULL, link TEXT NOT NULL)"""
         cursor.execute(createTableQuery)
 
-        sqliteInsertQuery = """ INSERT INTO fellows (id, name, img, email, desc, link) VALUES (?, ?, ?, ?, ?, ?) """
+        sqliteInsertQuery = """ INSERT INTO fellows (name, img, email, desc, link) VALUES (?, ?, ?, ?, ?) """
         photo = convertToBinaryData(img)
 
-        dataTuple = (fellowID, name, photo, email, desc, link)
+        dataTuple = (name, photo, email, desc, link)
         cursor.execute(sqliteInsertQuery, dataTuple)
         sqliteConn.commit()
         print(f'Data belonging to {name} has been uploaded')
@@ -33,11 +35,21 @@ def insertData(fellowID, name, img, email, desc, link):
         if (sqliteConn):
             sqliteConn.close()
 
-fellowID = 1925
-name = 'Thomas Shelby'
-img = "/mnt/e/projects/batch3site/static/img/tommy.jpg"
-email = 'gkkarobia@gmail.com'
-desc = "Everyone's a whore, Grace. We just sell different parts of ourselves."
-link = 'https://sites.google.com/10academy.org/10-academy-batch-3-kevin'
+def loadinfo(csvfile):
+    df = pd.read_csv(csvfile)
+    df.dropna(inplace=True)
+    df.reset_index(inplace=True)
 
-insertData(fellowID, name, img, email, desc, link)
+    for i in range(df.shape[0]):
+        name = df['Name'][i]
+        email = df['Email'][i]
+        link = df['Profile Link'][i]
+        desc = df['Two-line description'][i]
+
+        photoname = name.split()[0] + '.jpg'
+        photopath = os.getcwd() + '/static/img/' + photoname
+
+        insertData(name, photopath, email, desc, link)
+
+if __name__ == '__main__':
+    loadinfo('10 Academy Profiles.csv')

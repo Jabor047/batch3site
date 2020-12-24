@@ -10,43 +10,13 @@
         <title>Batch 3 Fellows</title>
     </head>
     <body>
+        <div class="header">
+            <a href="https://www.10academy.org/" class="logo">
+                <img src="{{ url_for('static', filename='img/10_Academy.png') }}" height="45px" width="100px">
+            </a>
+            <div class="batch">Batch 3 Fellows</div>
+        </div>
         <div class="grid-container">
-            <div class="card">
-                <div class="img-div"> <img class="fellow-img" src={{ image }}/> </div>
-                <div class="content">
-                    <p class="name">{{ name }}</p>
-                    <p class="mail" >{{ mail }}</p>
-                    <p class="desc">{{ description }}</p>
-                    <a href={{ portLink }} class="button"> Portfolio </a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img-div"> <img class="fellow-img" src={{ image }}/> </div>
-                <div class="content">
-                    <p class="name">{{ name }}</p>
-                    <p class="mail">{{ mail }}</p>
-                    <p class="desc">{{ description }}</p>
-                    <a href={{ portLink }} class="button"> Portfolio </a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img-div"> <img class="fellow-img" src={{ image }}/> </div>
-                <div class="content">
-                    <p class="name">{{ name }}</p>
-                    <p class="mail" >{{ mail }}</p>
-                    <p class="desc" >{{ description }}</p>
-                    <a href={{ portLink }} class="button"> Portfolio </a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img-div"> <img class="fellow-img" src={{ image }}/> </div>
-                <div class="content">
-                    <p class="name">{{ name }}</p>
-                    <p class="mail" >{{ mail }}</p>
-                    <p class="desc" >{{ description }}</p>
-                    <a href={{ portLink }} class="button"> Portfolio </a>
-                </div>
-            </div>
         </div>
     </body>
 </html>
