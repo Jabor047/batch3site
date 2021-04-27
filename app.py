@@ -28,7 +28,7 @@ def fetchData():
     cursor = conn.cursor()
 
     # select all values from the fellows table
-    sqlFetchQuery = """SELECT * FROM fellows"""
+    sqlFetchQuery = """SELECT * FROM fellowsWithPlaced"""
     cursor.execute(sqlFetchQuery)
     record = cursor.fetchall()
     cursor.close()

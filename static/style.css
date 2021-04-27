@@ -83,3 +83,22 @@ body {
     color: whitesmoke;
     border: 1px solid #489fd9;
 }
+.placed{
+    position: relative;
+}
+
+.placed::before {
+    content: "Hired";
+    color: #ED1F33;
+    font-size: 1.75rem;
+    text-align: center;
+    vertical-align: -50%;
+    border-radius: .25rem;
+    z-index: 10;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.83);
+}
