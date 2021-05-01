@@ -36,7 +36,7 @@
     var times = Object.keys(data).length;
     for (var i=0; i<times; i++){
         if (data[i][6]){
-            $('.grid-container').append('<div class="card placed"><div class="img-div"><img class="fellow-img" src="data:image/jpg;base64,' + data[i][02] + '"/></div><div class="content"><p class="name">'+ data[i][1] +'</p><a href="mailto:' + data[i][3] + '" class="mail" >'+ data[i][3] +'</a><p class="desc">' + data[i][4] + '</p><a href="' + data[i][5] + '" class="button"> Portfolio </a></div></div>');
+            $('.grid-container').append('<div class="card placed"><div class="img-div grayscale"><img class="fellow-img" src="data:image/jpg;base64,' + data[i][02] + '"/></div><div class="content"><p class="name">'+ data[i][1] +'</p><a href="mailto:' + data[i][3] + '" class="mail" >'+ data[i][3] +'</a><p class="desc">' + data[i][4] + '</p><a href="' + data[i][5] + '" class="button"> Portfolio </a></div></div>');
         } else {
             $('.grid-container').append('<div class="card"><div class="img-div"><img class="fellow-img" src="data:image/jpg;base64,' + data[i][02] + '"/></div><div class="content"><p class="name">'+ data[i][1] +'</p><a href="mailto:' + data[i][3] + '" class="mail" >'+ data[i][3] +'</a><p class="desc">' + data[i][4] + '</p><a href="' + data[i][5] + '" class="button"> Portfolio </a></div></div>');
         }
